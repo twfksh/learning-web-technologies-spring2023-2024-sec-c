@@ -1,0 +1,29 @@
+<students>
+    <student>
+        <sl_no>23</sl_no>
+        <name>John Carter</name>
+        <addmission_date>
+            <day>25</day>
+            <month>12</month>
+            <year>2015</year>
+        </addmission_date>
+    </student>
+    <student>
+        <sl_no>29</sl_no>
+        <name>Bob Marshal</name>
+        <addmission_date>
+            <day>13</day>
+            <month>02</month>
+            <year>1999</year>
+        </addmission_date>
+    </student>
+    <student>
+        <sl_no>35</sl_no>
+        <name>Clark Kent</name>
+        <addmission_date>
+            <day>17</day>
+            <month>06</month>
+            <year>2005</year>
+        </addmission_date>
+    </student>
+</students>
