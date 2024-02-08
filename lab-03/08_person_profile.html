@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form - Person Profile</title>
+</head>
+<body>
+    <form method="get" action="" enctype="" >
+        <table border="1">
+            <th colspan="2">PERSON PROFILE</th>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="name" value=""></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio"> Male 
+                    <input type="radio"> Female
+                    <input type="radio"> Other
+                </td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td>
+                    <input type="number" name="day" placeholder="DD" min="1" max="31" required /> /
+                    <input type="number" name="month" placeholder="MM" min="1" max="12" required /> /
+                    <input type="number" name="year" placeholder="YYYY" min="1900" max="9999" required />
+                </td>
+            </tr>
+            <tr>
+                <td>Blood Group</td>
+                <td>
+                    <select name="blood-group">
+                        <option value="">A+</option>
+                        <option value="">A-</option>
+                        <option value="">B+</option>
+                        <option value="">B-</option>
+                        <option value="">AB+</option>
+                        <option value="">AB-</option>
+                        <option value="">O+</option>
+                        <option value="">O-</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Degree</td>
+                <td>
+                    <input type="checkbox" name="ssc" value="SSC"> SSC 
+                    <input type="checkbox" name="ssc" value="SSC"> HSC
+                    <input type="checkbox" name="ssc" value="SSC"> BSc 
+                    <input type="checkbox" name="ssc" value="SSC"> MSc 
+                </td>
+            </tr>
+            <tr>
+                <td>Photo</td>
+                <td>
+                    <input type="file" name="profile-picture" value="" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input type="submit">
+                    <input type="reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
