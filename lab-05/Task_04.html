@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <form method="post" action="Task_04.php">
+        <fieldset>
+            <legend>REGISTRATION</legend>
+            Name: <input type="text" name="name" /> <hr>
+            Email: <input type="email" name="email" /> <hr>
+            User Name: <input type="text" name="username" /> <hr>
+            Password: <input type="password" name="password" /> <hr>
+            Confirm Password: <input type="password" name="confirm-passwd" /> <hr>
+            <fieldset>
+                <legend>Gender</legend>
+                <input type="radio" name="gender-male" /> Male 
+                <input type="radio" name="gender-female" /> Female
+                <input type="radio" name="gender-other" /> Other
+            </fieldset>
+            <hr>
+            <fieldset>
+                <legend>Date of Birth</legend>
+                <input type="number" name="day" min="1" max="31" required /> /
+                <input type="number" name="month" min="1" max="12" required /> /
+                <input type="number" name="year" min="1900" max="9999" required /> (dd/mm/yyyy)
+            </fieldset>
+            <hr>
+            <input type="submit" name="submit" /> 
+            <input type="reset" name="reset" /> 
+        </fieldset>
+    </form>
+</body>
+</html>
