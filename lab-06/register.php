@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+<?php session_start(); ?>
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +37,18 @@
                     Confirm Password: <input type="password" name="confirm-password"> <hr>
                     <fieldset>
                         <legend>Gender</legend>
+<<<<<<< Updated upstream
                         <input type="radio" name="male" value="male"> Male
                         <input type="radio" name="female" value="female"> Female
                         <input type="radio" name="other" value="other"> Other
+=======
+                        <input type="radio" id="male" name="gender" value="male"> 
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female"> 
+                        <label for="female">Female</label>
+                        <input type="radio" id="other" name="gender" value="other"> 
+                        <label for="other">Other</label>
+>>>>>>> Stashed changes
                     </fieldset>
                     <fieldset>
                         <legend>Date of Birth</legend>

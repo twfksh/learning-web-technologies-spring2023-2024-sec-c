@@ -1,3 +1,27 @@
+<?php
+    session_start();
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["submit"])) {
+            $email = $_POST["fpass-email"];
+
+            foreach ($_SESSION["users"] as $username => $userData) {
+                if ($email == $userData["email"]) {
+                    echo "You password is: {$userData['password']}";
+                    echo "
+                        , <a href='login.php'>click here</a> to login.
+                    ";
+                    exit();
+                }
+            }
+
+            $_SESSION["fpass_error"] = "Email not found";
+            header("location: forgotPasswd.php");
+            exit();
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,24 +47,14 @@
         </th>
         <tr>
             <td>
-<<<<<<< Updated upstream
-=======
-                <form method="POST" action="auth.php">
->>>>>>> Stashed changes
+                <form method="POST" action="">
                 <fieldset>
-                    <legend>LOGIN</legend>
-                    User Name: <input type="text" name="username"> <br>
-                    Password: <input type="password" name="password"> <hr>
-                    <input type="checkbox" name="remember-me"> Remember me <br> <br>
+                    <legend>FORGOT PASSWORD</legend>
+                    Enter Email: <input type="email" id="email" name="fpass-email">
+                    <hr>
                     <input type="submit" name="submit" value="Submit">
-<<<<<<< Updated upstream
-                    <a href="forgotPassword.php">Forgot Password?</a>
-                </fieldset>
-=======
-                    <a href="forgotPasswd.php">Forgot Password?</a>
                 </fieldset>
                 </form>
->>>>>>> Stashed changes
             </td>
         </tr>
         <tr>
