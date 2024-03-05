@@ -13,7 +13,6 @@ function fetchUsers() {
         return null;
     }
 
-
     $users = [];
     while ($user = mysqli_fetch_assoc($result)) $users[] = $user;
 

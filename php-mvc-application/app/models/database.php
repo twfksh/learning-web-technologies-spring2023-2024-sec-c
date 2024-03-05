@@ -3,7 +3,7 @@
 require_once 'common.php';
 
 function getDatabaseConnection() {
-    $dbCred = parseConfig("credentials.json")['database'];
+    $dbCred = parseConfig(__DIR__ . "\credentials.json")['database'];
 
     $conn = mysqli_connect(
         $dbCred['host'], 
