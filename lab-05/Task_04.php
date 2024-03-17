@@ -11,16 +11,36 @@
         $dob_month = $_POST["month"];
         $dob_year = $_POST["year"];
 
-        if (validateUsername($usrname) && validatePassword($passwd)) {
-            echo "Registration successful.<br>";
-        } else {
-            echo "Registration unsuccessful.<br>";
+        if (empty($name)) {
+            echo "Name is required. <br>";
+        }
+        if (empty($email)) {
+            echo "Email is required. <br>";
+        }
+        if (empty($usrname)) {
+            echo "Username is required. <br>";
+        } elseif (!validateUsername($username)) {
+            echo "Invalid username! <br>";
+        }
+        if (empty($passwd)) {
+            echo "Password required. <br>";
+        } elseif (!validatePassword($passwd) &&
+                  !validatePassword($confirmPasswd)) {
+            echo "Invalid password! <br>";
+        } elseif ($passwd !== $confirmPasswd) {
+            echo "Password did not match! <br>";
+        }
+        if (empty($gender)) {
+            echo "Gender is required. <br>";
+        }
+        if (empty($dob_day) || empty($dob_month) || empty($dob_year)) {
+            echo "Date of birth required. <br>";
         }
     }
 
     function validateUsername($usrname) {
         $isValid = true;
-        // $usrname = custom_trim($usrname);
+        $usrname = custom_trim($usrname);
         $len = custom_strlen($usrname);
         if ($len < 2) {
             $isValid = false;
@@ -41,7 +61,7 @@
 
     function validatePassword($passwd) {
         $isValid = true;
-        // $passwd = custom_trim($passwd);
+        $passwd = custom_trim($passwd);
         $len = custom_strlen($passwd);
         if ($len < 8) {
             $isValid = false;
@@ -60,7 +80,7 @@
 
     function custom_strlen($str) {
         $len = 0;
-        while (isset($str[$len++]));
+        while (isset($str[$len])) $len++;
         return $len;
     }
 
@@ -68,6 +88,8 @@
         $result = '';
 
         $strLen = custom_strlen($str);
+
+        if ($strLen == 0) return '';
 
         if ($start < 0) $start = max(0, $strLen + $start);
 

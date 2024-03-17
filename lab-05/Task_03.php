@@ -1,54 +1,33 @@
 <?php
-    $profilePicture = "";
+    $profilePicture = $_FILES["profile-picture"] ?? null;
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_FILES["profile-picture"])) {
-            $profilePicture = $_FILES["profile-picture"];
-
-            if (validatePicture($profilePicture)) {
-                echo "Picture uploaded successfully! <br>";
-            } else {
-                echo "Failed to upload picture.<br>";
-            }
-        }
-    }
-
-    function validatePicture($file) {
-        $maxFileSize = 4 * 1024 * 1024;
+    if ($profilePicture && $profilePicture["error"] === UPLOAD_ERR_OK) {
         $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-        
-        $uploadDirectory = 'uploads/images/';
-        if (!file_exists($uploadDirectory)) {
-            mkdir($uploadDirectory, 0755, true);
-        }
+        $maxFileSize = 2 * 1024 * 1024; 
 
-        if ($file["error"] === UPLOAD_ERR_OK) {
-            $fileType = $file["type"];
+        $fileType = $profilePicture["type"];
+        $fileSize = $profilePicture["size"];
 
-            if (!inArray($fileType, $allowedTypes)) {
-                echo "Invalid file type. Allowed types: JPEG, PNG, GIF.";
-                return false;
+        if (!inArray($fileType, $allowedTypes)) {
+            echo "Invalid file type. Allowed types: JPEG, PNG, GIF.";
+        } elseif ($fileSize > $maxFileSize) {
+            echo "File size exceeds the maximum allowed size (2 MB).";
+        } else {
+            $uploadDirectory = 'uploads/images/';
+            if (!file_exists($uploadDirectory)) {
+                mkdir($uploadDirectory, 0755, true);
             }
 
-            if ($file["size"] > $maxFileSize) {
-                echo "File size exceeds the maximum allowd size (2 MB).";
-                return false;
-            }
+            $targetFileName = $uploadDirectory . "_" . $profilePicture["name"];
 
-            $targetFileName = $uploadDirectory . uniqid() . "_" . basename($file["name"]);
-
-            if (move_uploaded_file($file["tmp_name"], $targetFileName)) {
-                echo "Photo upload successful.";
-                return true;
+            if (move_uploaded_file($profilePicture["tmp_name"], $targetFileName)) {
+                echo "Picture uploaded successfully!";
             } else {
                 echo "Failed to move the uploaded photo.";
-                return false;
             }
-
-        } else {
-            echo "Please select a valid photo to upload.";
-            return false;
         }
+    } else {
+        echo "Please select a valid photo to upload.";
     }
 
     function inArray($needle, $haystack) {

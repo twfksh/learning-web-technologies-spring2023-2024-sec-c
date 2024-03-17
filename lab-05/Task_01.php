@@ -5,7 +5,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usrname = $_POST["username"];
         $passwd = $_POST["password"];
-        $remember = ($_POST["remember"] === null) ? $_POST["remember"] : "";
+        $remember = (isset($_POST["remember"])) ? $_POST["remember"] : "";
 
         if (validateUsername($usrname) && validatePassword($passwd)) {
             echo "Login successful, $usrname <br>";
@@ -56,7 +56,7 @@
 
     function custom_strlen($str) {
         $len = 0;
-        while (isset($str[$len++]));
+        while (isset($str[$len])) $len++;
         return $len;
     }
 
@@ -64,6 +64,8 @@
         $result = '';
 
         $strLen = custom_strlen($str);
+
+        if ($strLen == 0) return '';
 
         if ($start < 0) $start = max(0, $strLen + $start);
 
