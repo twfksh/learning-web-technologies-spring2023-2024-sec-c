@@ -1,41 +1,25 @@
 <?php
     session_start();
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username = custom_trim($_POST['username']);
-        $password = custom_trim($_POST['password']);
-        $remember = $_POST['remember'];
+    $curPasswd = $newPasswd = $reNewPasswd = "";
 
-        if ($username == $_SESSION['user']['username'] && $password == $_SESSION['user']['password']) {
-            $_SESSION['cur_user'] = $username;
-            if (isset($remember)) setcookie('cur_user_cookie', $username, time()+(60*60*24), '/');
-            header('location: dashboard.php');
-            exit();
-        }
-
-        header('location: login.php');
-        exit();
-    }
-
-    function validateUsername($usrname) {
-        $isValid = true;
-        $usrname = custom_trim($usrname);
-        $len = custom_strlen($usrname);
-        if ($len < 2) {
-            $isValid = false;
-        } else {
-            for ($i = 0; $i < $len; $i++) {
-                $ch = $usrname[$i];
-                if (!(($ch >= 'A' && $ch <= 'Z') ||
-                    ($ch >= 'a' && $ch <= 'z') ||
-                    ($ch >= '0' && $ch <= '9') ||
-                    ($usrname[$i] == '.') || ($usrname[$i] == '-') || ($usrname[$i] == '_'))) {
-                    $isValid = false;
-                    break;
-                }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $curPasswd = $_POST["cur-passwd"];
+        $newPasswd = $_POST["new-passwd"];
+        $reNewPasswd = $_POST["re-new-passwd"];
+    
+        if (validatePassword($curPasswd) && validatePassword($newPasswd) && validatePassword($reNewPasswd)) {
+            if ($curPasswd == $newPasswd) {
+                echo "Please use a password you have not used before!";
+            } elseif ($newPasswd !== $reNewPasswd) {
+                echo "Retype new password correctly!";  
+            } elseif ($curPasswd == $_SESSION['user']['password']) {
+                $_SESSION['user']['password'] = $newPasswd;
+                header('location: dashboard.php');
             }
+        } else {
+            echo "Invalid password, enter correct password! <br>";
         }
-        return $isValid;
     }
 
     function validatePassword($passwd) {

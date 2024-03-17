@@ -4,15 +4,10 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST["submit"])) {
             $email = $_POST["fpass-email"];
-
-            foreach ($_SESSION["users"] as $username => $userData) {
-                if ($email == $userData["email"]) {
-                    echo "You password is: {$userData['password']}";
-                    echo "
-                        , <a href='login.php'>click here</a> to login.
-                    ";
-                    exit();
-                }
+            if ($email == $_SESSION['user']['email']) {
+                echo "You password is: {$_SESSION['user']['password']}";
+                echo ", <a href='login.php'>click here</a> to login.";
+                exit();
             }
 
             $_SESSION["fpass_error"] = "Email not found";

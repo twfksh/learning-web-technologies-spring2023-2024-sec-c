@@ -6,9 +6,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $name = custom_trim($_POST['name']);
         $email = custom_trim($_POST['email']);
-        $username = custom_trim($_POST["username"]);
-        $password = custom_trim($_POST["password"]);
-        $confirmPassword = custom_trim($_POST["confirm-password"]);
         $gender = $_POST["gender"];
         $dd = $_POST["day"];
         $mm = $_POST["month"];
@@ -20,30 +17,15 @@
         if (empty($email)) {
             die("Require email.");
         }
-
-        if (empty($username) || empty($password)) {
-            die("Require username and password.");
-        } elseif (!validateUsername($username) && !validatePassword($passowrd)) {
-            die("Invalid username or password.");
-        } elseif ($password !== $confirmPassword) {
-            die("Passwords does not match.");
-        }
-
         if (empty($gender)) {
             die("Require gender.");
         }
-        
-        $user = [
-            'name'=> $name,
-            'email'=> $email,
-            'username'=> $username,
-            'password'=> $password,
-            'gender'=>   $gender,
-            'dob'=> [$dd, $mm, $yyyy]
-        ];
 
-        $_SESSION['user'] = $user;
-        header('location: login.php');
+        $_SESSION['user']['name'] = $name;
+        $_SESSION['user']['email'] = $email;
+        $_SESSION['user']['gender'] = $gender;
+        $_SESSION['user']['dob'] = [$dd, $mm, $yyyy];
+        header('location: viewProfile.php');
     }
 
     function validateUsername($usrname) {

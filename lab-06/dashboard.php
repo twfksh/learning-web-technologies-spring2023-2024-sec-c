@@ -1,7 +1,7 @@
 <?php 
     session_start();
 
-    if (!isset($_SESSION["users"])) {
+    if (!isset($_SESSION['cur_user']) && !isset($_COOKIE['cur_user_cookie'])) {
         header("location: login.php");
         exit();
     }
@@ -27,22 +27,22 @@
             <h2 style="display: inline;">xCompany</h2>
             <div>
                 Logged in as, 
-                <a href="#">User</a> |
-                <a href="#">Logout</a>
+                <a href="dashboard.php"><?= $_SESSION['cur_user'] ?></a> |
+                <a href="logout.php">Logout</a>
             </div>
         </th>
         <tr>
             <td>
                 <ul>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">View Profile</a></li>
-                    <li><a href="">Edit Profile</a></li>
-                    <li><a href="">Change Profile Picture</a></li>
-                    <li><a href="">Change Password</a></li>
-                    <li><a href="">Logout</a></li>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="viewProfile.php">View Profile</a></li>
+                    <li><a href="editProfile.php">Edit Profile</a></li>
+                    <li><a href="changeProfilePicture.php">Change Profile Picture</a></li>
+                    <li><a href="changePasswd.php">Change Password</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </td>
-            <td><h3>Welcome, <?="User"?></h3></td>
+            <td><h3>Welcome, <?=$_SESSION['cur_user']?></h3></td>
         </tr>
         <tr>
             <td colspan="2"><footer style="text-align: center;">Copyright © 2024</footer></td>

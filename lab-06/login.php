@@ -23,24 +23,16 @@
         </th>
         <tr>
             <td>
-<<<<<<< Updated upstream
-=======
                 <form method="POST" action="auth.php">
->>>>>>> Stashed changes
                 <fieldset>
                     <legend>LOGIN</legend>
                     User Name: <input type="text" name="username"> <br>
                     Password: <input type="password" name="password"> <hr>
-                    <input type="checkbox" name="remember-me"> Remember me <br> <br>
+                    <input type="checkbox" name="remember"> Remember me <br> <br>
                     <input type="submit" name="submit" value="Submit">
-<<<<<<< Updated upstream
-                    <a href="forgotPassword.php">Forgot Password?</a>
-                </fieldset>
-=======
                     <a href="forgotPasswd.php">Forgot Password?</a>
                 </fieldset>
                 </form>
->>>>>>> Stashed changes
             </td>
         </tr>
         <tr>
