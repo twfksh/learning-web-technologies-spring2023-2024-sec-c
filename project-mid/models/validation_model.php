@@ -42,7 +42,7 @@ function validatePassword($passwd) {
 
 function custom_strlen($str) {
     $len = 0;
-    while (isset($str[$len++]));
+    while (isset($str[$len])) $len++;
     return $len;
 }
 
@@ -74,3 +74,4 @@ function custom_trim($str) {
     else return "";
 }
 
+?>

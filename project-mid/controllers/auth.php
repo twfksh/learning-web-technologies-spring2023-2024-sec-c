@@ -9,14 +9,16 @@
     $password = custom_trim($_REQUEST['password']);
     $remember = $_REQUEST['remember'];
 
+    $isValidUsrPass = validateUsername($username) && validatePassword($password);
+
     if ($username == '' || $password == '') {
-        echo "null username or password";
-    } elseif (login($username, $password)) {
-        $_SESSION['opencrowd-curr-session'] = $username;
-        if (isset($remember)) setcookie('opencrowd-remember-me', 'true', time()+(86400 * 30 * 7), '/');
+        header('location: ../views/error.php?err=Error(login): Require valid username and password');
+    } elseif ($isValidUsrPass && login($username, $password)) {
+        $_SESSION['opencrowd-cur-session'] = $username;
+        if (isset($remember)) setcookie('opencrowd_cur_user_cookie', $username, time()+(60 * 60 * 24 * 7), '/');
         header('location: ../views/home.php');
     } else {
-        echo "invalid user!";
+        header('location: ../views/error.php?err=Error(login): Invalid username and password');
     }
 
 ?>
