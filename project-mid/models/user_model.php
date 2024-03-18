@@ -14,6 +14,18 @@ function login($username, $password) {
     return false;
 }
 
+function getUserByUsername($username) {
+    $conn = getDatabaseConnection();
+    $sql_stmt = "SELECT * FROM users WHERE username = '{$username}'";
+    $result = mysqli_query($conn, $sql_stmt);
+
+    if ($result && mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+        return $user;
+    }
+    return null;
+}
+
 function getAllUsers() {
     $conn = getDatabaseConnection();
     $sql_stmt = "SELECT * FROM users";

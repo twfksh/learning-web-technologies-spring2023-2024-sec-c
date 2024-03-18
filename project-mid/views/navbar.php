@@ -9,7 +9,7 @@
     <div>
         <a style="padding: 8px;" href="leaderboard.php">Leaderboard</a>
         <a style="padding: 8px;" href="products.php">Products</a>
-        <a style="padding: 8px;" href="activity_feed.php">Activity Feed</a>
+        <!-- <a style="padding: 8px;" href="activity_feed.php">Activity Feed</a> -->
         <a style="padding: 8px;" href="community.php">Community</a>
     </div>
     <div style="display: flex; align-items: center; justify-content: space-between;">

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $loggedIn = isset($_SESSION['opencrowd_cur_user']) || isset($_COOKIE['opencrowd_cur_user_cookie']);
+    $loggedIn = isset($_SESSION['opencrowd_cur_session']) || isset($_COOKIE['opencrowd_cur_user_cookie']);
 ?>
 
 <!DOCTYPE html>
@@ -8,14 +8,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Forum | OpenCrowd</title>
+    <title>Home | OpenCrowd</title>
 </head>
 <body>
     <?php include_once('navbar.php'); ?>
 
     <div class="hero-section">
         <?php if ($loggedIn): ?>
-            <h1>Welcome <?=$_COOKIE['opencrowd_cur_user_cookie']?>, to the OpenCrowd Community</h1>
+            <h1>Welcome <?=$_SESSION['opencrowd_cur_session']?>, to the OpenCrowd Community</h1>
             <p>What product are you launching or interested in today!</p>
         <?php else: ?>
             <h1>Welcome to OpenCrowd Community</h1>
