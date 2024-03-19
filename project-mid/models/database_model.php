@@ -21,8 +21,7 @@ CREATE TABLE `opencrowd`.`comments` (
     `parent_id` INT NOT NULL,
     `comment` TEXT NOT NULL, 
     `sender` VARCHAR(155) NOT NULL, 
-    `date` DATE NOT NULL,
-    FOREIGN KEY (`parent_id`) REFERENCES `products` (`id`) 
+    `date` DATE NOT NULL
 ) ENGINE = InnoDB;
 
 CREATE TABLE `opencrowd`.`products` (

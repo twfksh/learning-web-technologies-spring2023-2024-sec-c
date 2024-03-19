@@ -28,6 +28,7 @@
                     Gender:         <?= $curUser['gender'] ?>  <hr>
                     Date of Birth:  <?= $curUser['dob'] ?> <hr>
                     <button onclick="window.location.href='edit_profile.php'">Edit Profile</button>
-                    <button onclick="window.location.href='products.php'">My Products</button>
+                    <button onclick="window.location.href='products.php?username=<?=$username?>'">My Products</button>
+                    <button onclick="window.location.href='add_product.php?username=<?=$username?>'">Add Products</button>
     </fieldset>
 </div>

@@ -46,10 +46,8 @@ function registerUser($user) {
                          '{$user['password']}', '{$user['org']}', '{$user['role']}', '{$user['gender']}', '{$user['dob']}')";
     if (mysqli_query($conn, $sql_stmt)) {
         return true;
-    } else {
-        echo "Error: " . $sql_stmt . "<br>" . mysqli_error($conn);
-        return false;
     }
+    return false;
 }
 
 

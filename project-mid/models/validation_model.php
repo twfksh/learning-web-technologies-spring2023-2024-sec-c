@@ -40,6 +40,41 @@ function validatePassword($passwd) {
     return $isValid;
 }
 
+function validateImage($image) {
+    if ($image && $image["error"] === UPLOAD_ERR_OK) {
+        $allowedTypes = ['image/jpeg', 'image/png'];
+        $maxFileSize = 2 * 1024 * 1024; 
+
+        $fileType = $image["type"];
+        $fileSize = $image["size"];
+
+        if (!inArray($fileType, $allowedTypes)) {
+            echo "Invalid file type, Allowed JPEG, PNG only";
+            header('location: ../views/error.php?err=Error(image upload): Invalid file type, Allowed JPEG, PNG only');
+            return false;
+        } elseif ($fileSize > $maxFileSize) {
+            header('location: ../views/error.php?err=Error(image upload): Invalid file size');
+            return false;
+        } else {
+            $uploadDirectory = 'uploads/images/';
+            if (!file_exists($uploadDirectory)) {
+                mkdir($uploadDirectory, 0755, true);
+            }
+
+            $targetFileName = $uploadDirectory . $_SESSION['user']['username'] . '.' . (($fileType == 'image/jpeg') ? 'jpg' : 'png');
+
+            if (move_uploaded_file($image["tmp_name"], $targetFileName)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    } else {
+        header('location: ../views/error.php?err=Error(image upload): An unknowd error occured');
+        return false;
+    }
+}
+
 function custom_strlen($str) {
     $len = 0;
     while (isset($str[$len])) $len++;
@@ -72,6 +107,15 @@ function custom_trim($str) {
 
     if ($begin <= $end) return custom_substr($str, $begin, $end - $begin + 1);
     else return "";
+}
+
+function inArray($needle, $haystack) {
+    foreach ($haystack as $item) {
+        if ($item === $needle) {
+            return true;
+        }
+    }
+    return false;
 }
 
 ?>
