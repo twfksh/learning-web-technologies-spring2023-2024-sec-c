@@ -118,4 +118,40 @@ function inArray($needle, $haystack) {
     return false;
 }
 
+function arrayFilter($array, $callback) {
+    $filteredArray = array();
+    foreach ($array as $key => $value) {
+        if ($callback($value, $key)) {
+            $filteredArray[$key] = $value;
+        }
+    }
+    return $filteredArray;
+}
+
+function validateTextData($conn, $string) {
+    $escapeChars = array(
+        "\x00" => '\0',
+        "\n" => '\n',
+        "\r" => '\r',
+        "\\" => '\\\\',
+        "'" => "\\'",
+        '"' => '\\"',
+        "\x1a" => '\Z'
+    );
+    
+    $escapedString = '';
+    for ($i = 0; $i < custom_strlen($string); $i++) {
+        $char = $string[$i];
+        if (isset($escapeChars[$char])) {
+            $escapedString .= $escapeChars[$char];
+        } else {
+            $escapedString .= $char;
+        }
+    }
+    
+    return $escapedString;
+}
+
+
+
 ?>

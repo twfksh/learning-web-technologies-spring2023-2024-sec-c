@@ -39,4 +39,12 @@
 
         $_SESSION['products'] = $products;
     }
+
+    if (!isset($_SESSION['posts'])) {
+        require_once('../models/community_model.php');
+        $posts = getPosts();
+        if ($posts) {
+            $_SESSION['posts'] = $posts;
+        }
+    }
 ?>

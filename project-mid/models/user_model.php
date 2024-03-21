@@ -41,6 +41,12 @@ function getAllUsers() {
 
 function registerUser($user) {
     $conn = getDatabaseConnection();
+
+    foreach ($user as $key => $value) {
+        $newValue = validateTextData($conn, $value);
+        $post[$key] = $newValue;
+    }
+
     $sql_stmt = "INSERT INTO users (name, email, headline, username, password, org, role, gender, dob) 
                  VALUES ('{$user['name']}', '{$user['email']}', '{$user['headline']}', '{$user['username']}', 
                          '{$user['password']}', '{$user['org']}', '{$user['role']}', '{$user['gender']}', '{$user['dob']}')";
@@ -62,6 +68,12 @@ function deleteUser($username) {
 
 function updateUser($user) {
     $conn = getDatabaseConnection();
+
+    foreach ($user as $key => $value) {
+        $newValue = validateTextData($conn, $value);
+        $post[$key] = $newValue;
+    }
+
     $sql_stmt = "UPDATE users SET full_name = '{$user['name']}', email = '{$user['email']}', username = '{$user['username']}', passwd = '{$user['password']}', headline = '{$user['headline']}', org = '{$user['org']}', urole = '{$user['role']}'";
     if (mysqli_query($conn, $sql_stmt)) {
         return true;

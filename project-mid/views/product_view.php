@@ -27,7 +27,7 @@
         $comment = $_POST['comment'];
         $username = $_SESSION['opencrowd_cur_session']; // Assuming the username is stored in the session
         $newComment = [
-            'username' => $username,
+            'username' => isset($username) ? $username : 'Anonymus',
             'comment' => $comment
         ];
         // You can save the comment to your database or implement further validation here

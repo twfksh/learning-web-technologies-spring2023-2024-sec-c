@@ -2,10 +2,11 @@
     session_start();
 
     include_once '../controllers/initialize.php';
+    require_once '../models/validation_model.php';
 
     if (isset($_GET['query']) && !empty($_GET['query'])) {
         $query = $_GET['query'];
-        $filtered_products = array_filter($_SESSION['products'], function($product) use ($query) {
+        $filtered_products = arrayFilter($_SESSION['products'], function($product) use ($query) {
             return stripos($product['name'], $query) !== false || stripos($product['publishedBy'], $query) !== false || stripos($product['description'], $query) !== false;
         });
     }
