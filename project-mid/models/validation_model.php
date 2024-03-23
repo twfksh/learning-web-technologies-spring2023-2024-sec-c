@@ -128,7 +128,7 @@ function arrayFilter($array, $callback) {
     return $filteredArray;
 }
 
-function validateTextData($conn, $string) {
+function validateTextData($string) {
     $escapeChars = array(
         "\x00" => '\0',
         "\n" => '\n',

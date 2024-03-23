@@ -43,7 +43,7 @@ function registerUser($user) {
     $conn = getDatabaseConnection();
 
     foreach ($user as $key => $value) {
-        $newValue = validateTextData($conn, $value);
+        $newValue = validateTextData($value);
         $post[$key] = $newValue;
     }
 
@@ -70,13 +70,33 @@ function updateUser($user) {
     $conn = getDatabaseConnection();
 
     foreach ($user as $key => $value) {
-        $newValue = validateTextData($conn, $value);
+        $newValue = validateTextData($value);
         $post[$key] = $newValue;
     }
 
-    $sql_stmt = "UPDATE users SET full_name = '{$user['name']}', email = '{$user['email']}', username = '{$user['username']}', passwd = '{$user['password']}', headline = '{$user['headline']}', org = '{$user['org']}', urole = '{$user['role']}'";
+    $userId = getUserIdFromUsername($user['username']);
+    if (!$userId) {
+        header('location: ../views/error.php?err=Error(updating user info): user update failed');
+        exit();
+    };
+
+    $sql_stmt = "UPDATE users SET name = '{$user['name']}', email = '{$user['email']}', username = '{$user['username']}', password = '{$user['password']}', headline = '{$user['headline']}', org = '{$user['org']}', role = '{$user['role']}', gender = '{$user['gender']}', dob = '{$user['dob']}' WHERE id = '{$userId}'";
     if (mysqli_query($conn, $sql_stmt)) {
         return true;
     }
     return false;
 }
+
+function getUserIdFromUsername($username) {
+    $conn = getDatabaseConnection();
+    $username = validateTextData($username);
+    $sql = "SELECT id FROM users WHERE username = '{$username}'";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        $userId = mysqli_fetch_assoc($result);
+        return $userId['id'];
+    }
+    return null;
+}
+
+?>

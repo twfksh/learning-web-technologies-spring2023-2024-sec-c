@@ -24,7 +24,7 @@
 <body>
     <?php include_once('navbar.php'); ?>
 
-    <form style="margin: auto; width: 50%;" method="post" action="../controllers/update_profile.php" >
+    <form style="margin: auto; width: 50%;" method="post" action="../controllers/update_profile.php" enctype="multipart/form-data" >
         <fieldset>
             <legend>Edit Profile [<?=$_SESSION['opencrowd_cur_session']?>]</legend>
             <?php

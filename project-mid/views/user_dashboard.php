@@ -9,8 +9,8 @@
         <legend>Profile [<?=$_SESSION['opencrowd_cur_session']?>]</legend>
                 <?php
                     $username = $curUser['username'];
-                    $jpgProfilePicture = "uploads/images/{$username}.jpg";
-                    $pngProfilePicture = "uploads/images/{$username}.png";
+                    $jpgProfilePicture = "../uploads/images/{$username}.jpg";
+                    $pngProfilePicture = "../uploads/images/{$username}.png";
 
                     if (file_exists($jpgProfilePicture)) {
                         echo "<img src='{$jpgProfilePicture}' alt='Profile Picture' width='150'>";
