@@ -17,7 +17,13 @@
 
     function addProduct($product) {
         $conn = getDatabaseConnection();
-        $sql = "INSERT INTO (name, headline, description, url, img, votes, launch_date) VALUES ('{$product['name']}', '{$product['headline']}', '{$product['description']}', '{$product['url']}', '{$product['img']}', '{$product['votes']}', '{$product['launch_date']}')";
+
+        foreach ($product as $key => $value) {
+            $newValue = validateTextData($value);
+            $post[$key] = $newValue;
+        }
+
+        $sql = "INSERT INTO (name, headline, description, url, img, votes, launch_date) VALUES ('{$product['name']}', '{$product['headline']}', '{$product['description']}', '{$product['url']}', '{$product['img']}', '{$product['votes']}', '{$product['launch_date']}', '{$product['published_by']}')";
 
         if (mysqli_query($conn, $sql)) {
             return true;
@@ -27,7 +33,13 @@
 
     function updateProduct($product) {
         $conn = getDatabaseConnection();
-        $sql = "UPDATE products SET name = '{$product['name']}', headline = '{$product['headline']}', description = '{$product['description']}', url = '{$product['url']}', img = '{$product['img']}', votes = '{$product['votes']}', launch_date = '{$product['launch_date']}'";
+
+        foreach ($product as $key => $value) {
+            $newValue = validateTextData($value);
+            $post[$key] = $newValue;
+        }
+
+        $sql = "UPDATE products SET name = '{$product['name']}', headline = '{$product['headline']}', description = '{$product['description']}', url = '{$product['url']}', img = '{$product['img']}', votes = '{$product['votes']}', launch_date = '{$product['launch_date']}', '{$product['published_by']}'";
         if (mysqli_query($conn, $sql)) {
             return true;
         }

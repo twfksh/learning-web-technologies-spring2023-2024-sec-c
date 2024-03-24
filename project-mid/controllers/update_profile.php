@@ -59,7 +59,7 @@
             $fileSize = $profilePicture["size"];
 
             if (!inArray($fileType, $allowedTypes)) {
-                echo "Invalid file type, Allowed JPEG, PNG only";
+                echo "Invalid file type, allowed jpeg, png only";
             } elseif ($fileSize > $maxFileSize) {
                 echo "File size exceeds the maximum allowed size (2 MB).";
             } else {
@@ -71,13 +71,13 @@
                 $targetFileName = $uploadDirectory . $_SESSION['opencrowd_cur_session'] . '.' . (($fileType == 'image/jpeg') ? 'jpg' : 'png');
 
                 if (move_uploaded_file($profilePicture["tmp_name"], $targetFileName)) {
-                    echo "Picture uploaded successfully!";
+                    echo "Profile picture uploaded successfully!";
                 } else {
                     echo "Failed to move the uploaded photo.";
                 }
             }
         } else {
-            echo "Please select a valid photo to upload.";
+            echo "Please select a valid profile photo to upload.";
         }
 
         if (!updateUser($user)) {
