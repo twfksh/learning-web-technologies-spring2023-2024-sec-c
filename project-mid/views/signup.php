@@ -8,17 +8,17 @@
 <body>
     <?php include_once('navbar.php'); ?>
     
-    <form style="margin: auto; width: 50%;" method="post" action="../controllers/reg.php" enctype="multipart/form-data">
+    <form style="margin: auto; width: 50%;" method="post" action="" enctype="multipart/form-data">
         <fieldset>
             <legend>User | Sign Up</legend>
-            Name:  <br> <input type="text" name="name" placeholder="Full Name"> <hr>
-            Email: <br> <input type="email" name="email" placeholder="username@example.com"> <hr>
-            Headline: <br> <input type="text" name="headline" placeholder="Write a headline" style="width: 99%;"> <br> <hr>
-            Username: <br> <input type="text" name="username" placeholder="Username"> <br> <hr>
-            Password: <br> <input type="password" name="password" placeholder="Password"> <br> <br>
-            Confirm Password: <br> <input type="password" name="conf-password" placeholder="Confirm Password"> <br> <hr>
-            Org: <br> <input type="text" name="org" placeholder="Your organization name"> <br> <br>
-            Role:   <select name="role">
+            Name:  <br> <input type="text" id="name" name="name" placeholder="Full Name"> <hr>
+            Email: <br> <input type="email" id="email" name="email" placeholder="username@example.com"> <hr>
+            Headline: <br> <input type="text" id="headline" name="headline" placeholder="Write a headline" style="width: 99%;"> <br> <hr>
+            Username: <br> <input type="text" id="username" name="username" placeholder="Username"> <br> <hr>
+            Password: <br> <input type="password" id="password" name="password" placeholder="Password"> <br> <br>
+            Confirm Password: <br> <input type="password" id="conf-password" name="conf-password" placeholder="Confirm Password"> <br> <hr>
+            Org: <br> <input type="text" id="org" name="org" placeholder="Your organization name"> <br> <br>
+            Role:   <select id="role" name="role">
                         <option value="Developer">Developer</option>
                         <option value="Investor">Investor</option>
                         <option value="Contributor">Contributor</option>
@@ -30,11 +30,13 @@
                         <label for="female">Female</label>
                         <input type="radio" id="other" name="gender" value="other" /> 
                         <label for="other">Other</label> <hr>
-            Date of Birth:  <br> <input type="date" name="dob" required /> <hr>
+            Date of Birth:  <br> <input type="date" id="dob" name="dob" required /> <hr>
 
-            <input type="submit" name="submit">
+            <input type="submit" name="submit" onclick="register()">
             <input type="reset" name="reset">
         </fieldset>
     </form>
+
+    <script src="../ajax/register.js"></script>
 </body>
 </html>

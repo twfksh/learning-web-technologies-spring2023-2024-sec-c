@@ -7,16 +7,16 @@
     $name = $email = $headline = $username = $password = $confirmPassword = $org = $role = $gender = $dob = "";
     
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = custom_trim($_POST['name']);
-        $email = custom_trim($_POST['email']);
-        $headline = custom_trim($_POST['headline']);
-        $username = custom_trim($_POST["username"]);
-        $password = custom_trim($_POST["password"]);
-        $confirmPassword = custom_trim($_POST["conf-password"]);
-        $org = custom_trim($_POST['org']);
-        $role = custom_trim($_POST['role']);
-        $gender = $_POST["gender"];
-        $dob = $_POST['dob'];
+        $name = custom_trim($_REQUEST['name']);
+        $email = custom_trim($_REQUEST['email']);
+        $headline = custom_trim($_REQUEST['headline']);
+        $username = custom_trim($_REQUEST["username"]);
+        $password = custom_trim($_REQUEST["password"]);
+        $confirmPassword = custom_trim($_REQUEST["conf-password"]);
+        $org = custom_trim($_REQUEST['org']);
+        $role = custom_trim($_REQUEST['role']);
+        $gender = $_REQUEST["gender"];
+        $dob = $_REQUEST['dob'];
         
         if (empty($name)) {
             die("Require name.");
