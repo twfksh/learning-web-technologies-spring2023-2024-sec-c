@@ -1,5 +1,1 @@
-<?php
-
-header('location: ./views/index.php');
-
-?>
+<?php header('location: ./views/index.php'); ?>

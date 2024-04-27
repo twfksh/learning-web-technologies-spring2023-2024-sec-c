@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | OpenCrowd</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <?php include_once('navbar.php'); ?>
@@ -32,7 +33,7 @@
                         <label for="other">Other</label> <hr>
             Date of Birth:  <br> <input type="date" id="dob" name="dob" required /> <hr>
 
-            <input type="submit" name="submit" onclick="register()">
+            <input type="button" name="submit" value="Submit" onclick="register()">
             <input type="reset" name="reset">
         </fieldset>
     </form>

@@ -8,7 +8,7 @@ function register() {
     let org = document.getElementById("org").value;
     let role = document.getElementById("role").value;
     let gender = getRadioValue("gender");
-    let dob = getElementById("dob").value;
+    let dob = document.getElementById("dob").value;
 
     console.log(dob);
 

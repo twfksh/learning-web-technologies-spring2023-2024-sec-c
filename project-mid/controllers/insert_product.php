@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require_once '../models/validation_model.php';
+    require_once '../utils/validation.php';
     require_once '../models/product_model.php';
 
     $name = $email = $headline = $username = $password = $confirmPassword = $org = $role = $gender = $dob = "";

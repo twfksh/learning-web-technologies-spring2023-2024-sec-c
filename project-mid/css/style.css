@@ -1,0 +1,32 @@
+.navbar {
+    background-color: #f8f9fa;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    /* box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1); */
+}
+
+.navbar a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.navbar a:hover {
+    color: #007bff;
+}
+
+.navbar h3 {
+    margin: 0;
+}
+
+.navbar form {
+    display: flex;
+    align-items: center;
+}
+
+.navbar input[type="text"] {
+    margin-right: 10px;
+}

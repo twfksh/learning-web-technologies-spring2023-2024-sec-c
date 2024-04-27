@@ -4,9 +4,9 @@
     } 
 ?>
 
-<nav style="display: flex; align-items: center; justify-content: space-between;">
-    <h3 style="padding: 8px;"><a href="home.php">OpenCrowd</a></h3>
-    <div>
+<nav class="navbar" style="display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex;">
+        <h3 style="padding: 8px;"><a href="home.php">OpenCrowd</a></h3>
         <a style="padding: 8px;" href="leaderboard.php">Leaderboard</a>
         <a style="padding: 8px;" href="products.php">Products</a>
         <!-- <a style="padding: 8px;" href="activity_feed.php">Activity Feed</a> -->
@@ -14,7 +14,7 @@
     </div>
     <div style="display: flex; align-items: center; justify-content: space-between;">
         <form action="search.php" method="GET" style="padding: 10px;">
-            <input type="text" name="query" placeholder="Search...">
+            <input class="input" name="text" placeholder="Search..." type="search">
             <button type="submit">Search</button>
         </form>
         <?php if (isset($_SESSION['opencrowd_cur_session']) || isset($_COOKIE['opencrowd_cur_user_cookie'])) { ?>
@@ -26,4 +26,3 @@
         <?php } ?>
     </div>
 </nav>
-<hr>

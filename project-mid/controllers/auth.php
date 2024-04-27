@@ -1,7 +1,7 @@
 <?php
 
     require_once '../models/user_model.php';
-    require_once '../models/validation_model.php';
+    require_once '../utils/validation.php';
 
     session_start();
 

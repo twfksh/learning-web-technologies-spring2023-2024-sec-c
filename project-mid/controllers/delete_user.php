@@ -2,7 +2,7 @@
     session_start();
     
     require_once '../models/user_model.php';
-    require_once '../models/validation_model.php';
+    require_once '../utils/validation.php';
 
     if (isset($_GET['username'])) {
         $username = custom_trim($_GET['username']);
